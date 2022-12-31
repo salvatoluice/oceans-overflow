@@ -16,7 +16,7 @@ const logo = (
 
 const cart = (
   <span className={styles.cart}>
-    <NavLink className={activeLink} to='/cart'>Cart <FaShoppingCart size={20} /><p>0</p> </NavLink>
+    <Link to='/cart'>Cart <FaShoppingCart size={20} /><p>0</p> </Link>
   </span>
 )
 
