@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styles from './Header.module.scss';
 import { FaShoppingCart, FaTimes } from 'react-icons/fa'
 import { AiOutlineMenu } from 'react-icons/ai'
@@ -16,8 +16,12 @@ const logo = (
 
 const cart = (
   <span className={styles.cart}>
-    <Link to='/cart'>Cart <FaShoppingCart size={20} /><p>0</p> </Link>
+    <NavLink className={activeLink} to='/cart'>Cart <FaShoppingCart size={20} /><p>0</p> </NavLink>
   </span>
+)
+
+const activeLink = (
+  ({isActive }) => (isActive ? `${styles.active}` : '')
 )
 
 const Header = () => {
@@ -43,10 +47,10 @@ const Header = () => {
                 <FaTimes size={22} color="#fff" onClick={hideMenu}/>
               </li>
               <li>
-                <Link to='/'>Home</Link>
+                <NavLink to='/' className={activeLink}>Home</NavLink>
               </li>
               <li>
-                <Link to='/contact'>Contacts</Link>
+                <NavLink to='/contact' className={activeLink}>Contacts</NavLink>
               </li>
             </ul>
           
@@ -54,9 +58,9 @@ const Header = () => {
 
         <div onClick={hideMenu} className={styles["header-right"]}>
           <span className={styles.links}>
-            <Link to='/login'>Login</Link>
-            <Link to='/register'>Register</Link>
-            <Link to='/order-history'>Orders</Link>
+            <NavLink className={activeLink} to='/login'>Login</NavLink>
+            <NavLink className={activeLink} to='/register'>Register</NavLink>
+            <NavLink className={activeLink} to='/order-history'>Orders</NavLink>
           </span>
           {cart}
         </div>
